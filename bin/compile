@@ -4,6 +4,12 @@
 # Fail fast and fail hard.
 set -eo pipefail
 
+# clean up leaking environment
+unset GIT_DIR
+
+if [ -z "$BUILDPACK_CACHE" ]; then BUILDPACK_CACHE="/tmp"; fi
+LP_DIR=`cd $(dirname $0); cd ..; pwd`
+
 BUILD_DIR=$1
 CACHE_DIR=$2
 
@@ -42,7 +48,7 @@ ln -s /usr/lib/libgmp.so.3.5.2 $FIXED_HOME/usr/lib/libgmp.so
 export LD_LIBRARY_PATH=$FIXED_HOME/usr/lib
 
 # Set PATH
-export PATH=$FIXED_HOME/ghc/bin:$FIXED_HOME/.cabal/bin$PATH
+export PATH=$FIXED_HOME/ghc/bin:$FIXED_HOME/.cabal/bin:$PATH
 
 echo "-----> Updating Cabal"
 cabal update
