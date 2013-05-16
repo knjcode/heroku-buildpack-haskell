@@ -1,4 +1,6 @@
-# Heroku Buildpack: Haskell
+![I have no idea what I'm doing](https://raw.github.com/BrianMMcClain/heroku-buildpack-haskell/master/ihavenoideawhatimdoing.jpg)
+
+# Heroku Buildpack: Haskell (Modified for Cloud Foundry)
 
 This is a [Heroku buildpack](http://devcenter.heroku.com/articles/buildpacks)
 for Haskell apps. It uses GHC 7.4.1 and cabal-1.16.0.1.
