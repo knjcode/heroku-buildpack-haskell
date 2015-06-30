@@ -18,7 +18,7 @@ FIXED_HOME=/app
 mkdir -p $CACHE_DIR
 
 if [ ! -e $CACHE_DIR/ghc ]; then
-  GHC_URL="http://informatik.uni-kiel.de/~sad/ghc.tar.gz"
+  GHC_URL="https://www.dropbox.com/s/g0f0o5yfwe8n729/ghc.tar.gz?dl=0"
   echo "-----> Downloading GHC"
   curl -# --max-time 120 -L "$GHC_URL" | tar xz -C $CACHE_DIR
 fi
@@ -37,7 +37,7 @@ if [ -e $CACHE_DIR/cabal ]; then
   rm -rf $FIXED_HOME/.cabal
   mv $CACHE_DIR/cabal $FIXED_HOME/.cabal
 elif [ ! -e $FIXED_HOME/.cabal ]; then
-  CABAL_URL="http://informatik.uni-kiel.de/~sad/cabal.tar.gz"
+  CABAL_URL="https://www.dropbox.com/s/4rxvt6gw4ntartd/cabal.tar.gz?dl=0"
   echo "-----> Downloading Cabal"
   curl -# --max-time 120 -L "$CABAL_URL" | tar xz -C $FIXED_HOME
 fi
