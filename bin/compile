@@ -20,7 +20,9 @@ mkdir -p $CACHE_DIR
 if [ ! -e $CACHE_DIR/ghc ]; then
   GHC_URL="https://www.dropbox.com/s/g0f0o5yfwe8n729/ghc.tar.gz?dl=0"
   echo "-----> Downloading GHC"
-  curl -# --max-time 120 -L "$GHC_URL" | tar xz -C $CACHE_DIR
+  # curl -# --max-time 120 -L "$GHC_URL" | tar xz -C $CACHE_DIR
+  wget -q -O - "$GHC_URL" | tar xz -C $CACHE_DIR
+  echo "-----> Done"
 fi
 
 # Restore GHC registry if available
@@ -39,7 +41,9 @@ if [ -e $CACHE_DIR/cabal ]; then
 elif [ ! -e $FIXED_HOME/.cabal ]; then
   CABAL_URL="https://www.dropbox.com/s/4rxvt6gw4ntartd/cabal.tar.gz?dl=0"
   echo "-----> Downloading Cabal"
-  curl -# --max-time 120 -L "$CABAL_URL" | tar xz -C $FIXED_HOME
+  # curl -# --max-time 120 -L "$CABAL_URL" | tar xz -C $FIXED_HOME
+  wget -q -O - "$CABAL_URL" | tar xz -C $FIXED_HOME
+  echo "-----> Done"
 fi
 
 # Set LD_LIBRARAY_PATH and link essential libraries
